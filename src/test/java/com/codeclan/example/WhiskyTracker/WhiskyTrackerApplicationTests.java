@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,5 +35,10 @@ public class WhiskyTrackerApplicationTests {
 		assertEquals(new Long(2), found.get(0).getId());
 	}
 
+	@Test
+	public void canFindDistilleryByRegion() {
+		List<Distillery> found = distilleryRepository.findDistilleryByRegion("Highland");
+		assertEquals(new Long(1), found.get(0).getId());
+	}
 
 }
